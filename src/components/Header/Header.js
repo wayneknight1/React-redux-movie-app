@@ -8,8 +8,10 @@ function Header() {
         <Link to='/'>
         <div className='logo'>Movie App</div>
         </Link>
+        <div className='container'>
          <div  className='user-image'>
             <img src={UserImage} alt = 'user'/>
+        </div>
         </div>
         
     </div>
