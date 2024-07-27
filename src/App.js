@@ -12,9 +12,9 @@ function App() {
         <Router>
             <Header></Header>
             <Routes>
-            <Route path='/' Component={Home}/>
-            <Route path='/movie/:imdbId' Component={MovieDetail}/>
-            <Route Component={PageNotFound}/>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/movie/:imdbId' element={<MovieDetail/>}/>
+            <Route path = '*' element={<PageNotFound/>}/>
             </Routes>
             <Footer/>
         </Router>
