@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { getAllMovies } from '../../features/movies/movieSlice'
+import { getAllMovies, getAllShows } from '../../features/movies/movieSlice'
 import MovieCard from '../MovieCard/MovieCard'
 import './MovieListing.scss'
 function MovieListing() {
     const movies = useSelector(getAllMovies)
+    const shows = useSelector(getAllShows)
     useEffect(() => {
         // console.log(`movies are ${JSON.stringify(movies)}`)
     },[])
     let renderMovies = '';
+    let renderShows = '';
     renderMovies = movies.Response === 'True'? (movies.Search.map((movie,index) => {
         return <MovieCard key = {index} data = {movie}/>
     })) :(
@@ -16,12 +18,26 @@ function MovieListing() {
             <h3>{movies.Error}</h3>
         </div>
     );
+    renderShows = shows.Response === 'True'? (shows.Search.map((movie,index) => {
+        return <MovieCard key = {index} data = {movie}/>
+    })) :(
+        <div className='shows-error'>
+            <h3>{shows.Error}</h3>
+        </div>
+    );
   return (
     <div className='movie-wrapper'>
         <div className='movie-list'>
             <h2>Movies</h2>
             <div className='movie-container'>
-                {renderMovies}
+            {renderMovies}
+                
+            </div>
+        </div>
+        <div className='show-list'>
+            <h2>Shows</h2>
+            <div className='movie-container'>
+            {renderShows}
             </div>
         </div>
     </div>
