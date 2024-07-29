@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { fetchMovieOrShowDetail, getSelectedMovieOrShow } from '../../features/movies/movieSlice'
 import { useSelector } from 'react-redux'
 import './MovieDetail.scss'
+import { removeSelectedMovieOrShow } from '../../features/movies/movieSlice'
 function MovieDetail() {
   const {imdbID} = useParams()
   const dispatch = useDispatch()
@@ -11,10 +12,14 @@ function MovieDetail() {
 
   useEffect(() => {
     dispatch(fetchMovieOrShowDetail(imdbID))
+    return () => {
+      dispatch(removeSelectedMovieOrShow())
+    }
   },[dispatch,imdbID])
 
   return (
     <div className='movie-section'>
+      {Object.keys(data).length >0 ? (<>
       <div className='section-left'>
         <div className='movie-title'>{data.Title}</div>
         <div className='movie-rating'>
@@ -59,6 +64,7 @@ function MovieDetail() {
       <div className='section-right'>
           <img src={data.Poster} alt={data.Title}/>
       </div>
+      </>): (<>...Loading</>)}
     </div>
   )
 }
