@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux'
 import { fetchAsyncMovies, fetchAsyncShows } from '../../features/movies/movieSlice'
 function Home() {
     const dispatch = useDispatch()
+    const movieTitle = 'Magic';
+    const seriesTitle = 'Chocolate';
     useEffect(() => {
-        dispatch(fetchAsyncMovies())
-        dispatch(fetchAsyncShows())
+        dispatch(fetchAsyncMovies(movieTitle))
+        dispatch(fetchAsyncShows(seriesTitle))
     },[]) 
   return (
     <div>

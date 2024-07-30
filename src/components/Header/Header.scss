@@ -9,6 +9,9 @@
     justify-content: space-between;
 }
 
+a{
+    text-decoration: none;
+}
 
 .logo{
     color: $font-primary;
@@ -21,3 +24,28 @@
     width: 38px;
     height: 38px;
 } 
+
+.search-bar{
+    width: 50%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+
+    form{
+        display: flex;
+        justify-content: center;
+        width: 70%;
+    }
+
+    input{
+        width: 100%;
+        height: 100%;
+        outline: none;
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    button{
+        padding: 10px;
+    }
+}

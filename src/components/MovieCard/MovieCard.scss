@@ -4,7 +4,8 @@
     background-color: $secondary-color;
     cursor: pointer;
     transition: all 0.3s;
-
+    height: 500px;
+    margin: 10px;
     &:hover{
         transform: scale(1.1);
         transition: all 0.3s;
